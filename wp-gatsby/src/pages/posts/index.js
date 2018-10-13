@@ -1,17 +1,18 @@
 import React, { Component } from "react"
 import Link from "gatsby-link"
 import PropTypes from "prop-types"
+import Layout from '../../components/layout'
 
 class PostsTemplate extends Component {
     render() {
         const data = this.props.data
 
         return(
-            <div>
+            <Layout>
                 <h1>Posts</h1>
 
                 {data.allWordpressPost.edges.map(({node}) => (
-                    <div key={node.slug} className={"post"} style={{ marginBottom: 50 }}>
+                    <div key={node.slug} className={"post"} style={{ marginBottom: 50 }}> 
                         <Link to={'post/' + node.slug}>
                             <h3>{node.title}</h3>
                         </Link>
@@ -22,7 +23,7 @@ class PostsTemplate extends Component {
                     </div>
                 ))}
 
-            </div>
+            </Layout>
         )
     }
 }

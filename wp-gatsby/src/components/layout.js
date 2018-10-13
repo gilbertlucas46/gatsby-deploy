@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import MainMenu from '../components/menu/mainMenu'
 
 import Header from './header'
 import './layout.css'
@@ -9,18 +10,27 @@ import './layout.css'
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+    query LayoutQuery{
+      allWordpressWpApiMenusMenusItems {
+        edges {
+          node{
+            id
+            name
+            items {
+              title
+              object_slug
+              url 
+            }
           }
         }
       }
+    }
+
     `}
     render={data => (
       <>
         <Helmet
-          title={data.site.siteMetadata.title}
+          title='zdfsdfasda'
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
@@ -28,7 +38,7 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle='fgsdfgds' />
         <div
           style={{
             margin: '0 auto',
@@ -37,6 +47,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
+          <MainMenu menu={data} />
           {children}
         </div>
       </>
@@ -49,3 +60,4 @@ Layout.propTypes = {
 }
 
 export default Layout
+
