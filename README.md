@@ -1,4 +1,4 @@
-# MobiJuce WebApp
+# Gatsby.js + Wordpress
 
 ### Tech
   - [Wordpresss] - Hybrid development framework
